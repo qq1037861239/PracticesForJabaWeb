@@ -1,0 +1,74 @@
+.header {
+    background-color: darksalmon;
+}
+
+.link-one {
+    background-color: blueviolet;
+    color: yellow;
+}
+
+.link-two {
+    background-color: deeppink;
+    color: blue;
+}
+
+.reg-box {
+    width: 480px;
+    height: 455px;
+    margin: 30px auto;
+    background-color: salmon;
+    color: #000;
+    font-size: 22px;
+    font-family: "楷体";
+}
+
+.reg-item {
+    width: 420px;
+    height: 45px;
+    margin: 0 auto;
+    padding: 10px 0 10px;
+    /*background-color: blueviolet;*/
+    line-height: 70px;
+}
+
+.item-title {
+    display: inline-block;
+    width: 100px;
+}
+
+.reg-item>input {
+    width: 260px;
+    height: 36px;
+    border: 2px lightsteelblue;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    border-radius: 18px;
+    font-size: 22px;
+    text-align: center;
+    outline: none;
+}
+
+.select>input {
+    width: 20px;
+    height: 20px;
+}
+
+.butt {
+    text-align: center;
+}
+
+.butt>input {
+    width: 80px;
+    height: 40px;
+    margin: 0 auto;
+    background-color: cadetblue;
+}
+
+.butt>input:hover {
+    background-color: maroon;
+}
+
+.butt-interval {
+    display: inline-block;
+    width: 20px;
+}

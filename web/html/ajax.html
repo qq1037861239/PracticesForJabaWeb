@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>这是AJAX的练习Demo</title>
+    <style>
+        html, body, .wall {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            border: 0;
+            padding: 0;
+        }
+
+        .main {
+            width: 1000px;
+            height: 800px;
+        }
+
+        table, table tr, table td {
+            border: 2px solid #808080;
+        }
+
+        table {
+            width: 400px;
+            height: 160px;
+            text-align: center;
+        }
+
+        .table-one input {
+            outline: none;
+            width: 161px;
+            height: 43px;
+            text-align: center;
+        }
+
+        .butts {
+            width: 520px;
+            height: 90px;
+            background-color: aquamarine;
+        }
+
+        .butts div {
+            height: 30px;
+            margin: auto 120px;
+            line-height: 30px;
+        }
+
+        .butts div input {
+            text-align: center;
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+<div class="wall">
+    <div class="main">
+        <div class="form">
+            <table class="table-one">
+                <tr>
+                    <td><input type="text" id="tr1-td1" value=""></td>
+                    <td><input type="text" id="tr1-td2" value=""></td>
+                    <td><input type="text" id="tr1-td3" value=""></td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="tr2-td1" value=""></td>
+                    <td><input type="text" id="tr2-td2" value=""></td>
+                    <td><input type="text" id="tr2-td3" value=""></td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="tr3-td1" value=""></td>
+                    <td><input type="text" id="tr3-td2" value=""></td>
+                    <td><input type="text" id="tr3-td3" value=""></td>
+                </tr>
+            </table>
+            <br>
+            <div class="butts">
+                <div>
+                    <input type="text" id="reset-none-one" value="" disabled>
+                    <input type="text" id="reset-none-two" value="" disabled>
+                    <input type="button" value="Reset" onclick="resetData();">
+                </div>
+                <div>
+                    <input type="text" id="write-attr-begin" value="">
+                    <input type="text" id="write-attr-end" value="">
+                    <input type="button" value="Write" onclick="writeData();">
+                </div>
+                <div>
+                    <input type="text" id="read-attr-begin" value="">
+                    <input type="text" id="read-attr-end" value="">
+                    <input type="button" value="Read" onclick="readData();">
+                </div>
+            </div>
+            <div id="info-box"></div>
+        </div>
+    </div>
+</div>
+<script>
+    var eleIds = ["tr1-td1", "tr1-td2", "tr1-td3",
+        "tr2-td1", "tr2-td2", "tr2-td3",
+        "tr3-td1", "tr3-td2", "tr3-td3"];
+
+    function getFormDatas() {
+        var datas = [];
+        for (var i = 0; i < eleIds.length; i++) {
+            var temp = document.getElementById(eleIds[i]).value;
+            if (temp != null) {
+                datas.push(temp);
+            } else {
+                datas.push("");
+            }
+        }
+        return datas;
+    }
+
+    function setToDatas(cuDatas) {
+        for (var i = 0; i < eleIds.length; i++) {
+            var cuData = cuDatas[i];
+            if (cuData != null) {
+                document.getElementById(eleIds[i]).value = cuData;
+            } else {
+
+                document.getElementById(eleIds[i]).value = "";
+            }
+        }
+    }
+
+    function writeData() {
+        var datas = getFormDatas().toString();
+        var datastr = "datas=" + datas;
+        var xmlhttp = new XMLHttpRequest();
+        var url = "/register/write";
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                document.getElementById("info-box").innerHTML = "<h5>写入成功！</h5>";
+            } else {
+                document.getElementById("info-box").innerHTML = "<h5>写入失败！</h5>";
+            }
+        };
+        xmlhttp.open("post", url);
+        xmlhttp.setRequestHeader("content-type", "application/x-www-form-urlencoded;charset=UTF-8");
+        xmlhttp.send(datastr);
+    }
+
+    function readData() {
+        var xmlhttp = new XMLHttpRequest();
+        var url = "/register/read";
+        var datas;
+        var beginOfReadRange = document.getElementById("read-attr-begin").value;
+        var endOfReadRange = document.getElementById("read-attr-end").value;
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                datas = xmlhttp.responseText.split(", ");
+                setToDatas(datas);
+                document.getElementById("info-box").innerHTML = "<h5>读取成功！</h5>";
+            } else {
+                document.getElementById("info-box").innerHTML = "<h5>读取失败！</h5>";
+            }
+        };
+        xmlhttp.open("post", url);
+        xmlhttp.setRequestHeader("content-type", "application/x-www-form-urlencoded;charset=UTF-8");
+        xmlhttp.send("beginOfReadRange=" + beginOfReadRange + "&endOfReadRange=" + endOfReadRange);
+    }
+
+    function resetData() {
+        for (var i = 0; i < eleIds.length; i++) {
+            document.getElementById(eleIds[i]).value = "";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+/*******气泡************/
+.reminBox{
+    width: 200px;
+    height: 38px;
+    position: relative;
+    top: -10px;
+    left: 160px;
+    background: #fff;
+    border: 1px solid #808080;
+    border-radius: 5px;
+}
+.reminBox:before{
+    content: "";
+    width: 0;
+    height: 0;
+    z-index: 1;
+    position: absolute;
+    top: -40px;
+    left: 22px;
+    border-top: 20px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid #fff;
+    border-left: 10px solid transparent;
+}
+.reminBox:after{
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: -40px;
+    left: 20px;
+    border-top: 20px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 20px solid #808080;
+    border-left: 12px solid transparent;
+}
+/*******感叹号**********/
+.reminIcon{
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 10px;
+    left: 10px;
+    background: #ffa300;
+}
+.reminIcon:before{
+    position: absolute;
+    content: "";
+    width: 2px;
+    height: 8px;
+    background: #fff;
+    border: 1px solid #fff;
+    border-radius: 2px 2px 50% 50%;
+    top: 1px;
+    right: 7px;
+}
+.reminIcon:after{
+    position: absolute;
+    content: "";
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    top: 12px;
+    right: 7px;
+}
+/*********文本********/
+.reminText{
+    height: 38px;
+    background: #fff;
+    position: absolute;
+    color: #000;
+    top: 0;
+    left: 38px;
+    font-size: 16px;
+    line-height: 38px;
+}

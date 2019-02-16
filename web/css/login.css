@@ -1,0 +1,73 @@
+.header {
+    background-color: cadetblue;
+}
+
+.link-one {
+    background-color: burlywood;
+    color: blueviolet;
+}
+
+.link-two {
+    background-color: salmon;
+    color: maroon;
+}
+
+.reg-box {
+    width: 480px;
+    height: 455px;
+    margin: 30px auto;
+    background-color: salmon;
+    color: #000;
+    font-size: 22px;
+    font-family: "楷体";
+}
+
+.item-interval {
+    height: 40px;
+}
+
+.reg-item {
+    width: 420px;
+    height: 45px;
+    margin: 0 auto;
+    padding: 20px 0 20px;
+    /*background-color: blueviolet;*/
+    line-height: 70px;
+}
+
+.item-title {
+    display: inline-block;
+    width: 100px;
+}
+
+.reg-item>input {
+    width: 260px;
+    height: 36px;
+    border: 2px lightsteelblue;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    border-radius: 18px;
+    font-size: 22px;
+    text-align: center;
+    outline: none;
+}
+
+.butt {
+    text-align: center;
+}
+
+.butt>input {
+    width: 80px;
+    height: 40px;
+    margin: 0 auto;
+    background-color: cadetblue;
+}
+
+.butt>input:hover {
+    background-color: maroon;
+}
+
+.butt-interval {
+    display: inline-block;
+    width: 20px;
+}
